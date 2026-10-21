@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="FreeHost Cloud hosting control panel prototype">
+  <title>FreeHost Cloud — Control Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">F</span><span>FreeHost<span class="muted-brand"> Cloud</span></span></a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav>
+        <a class="nav-item active" href="#overview" data-view="overview"><span>▦</span> Overview</a>
+        <a class="nav-item" href="#servers" data-view="servers"><span>▣</span> Servers</a>
+        <a class="nav-item" href="#activity" data-view="activity"><span>◷</span> Activity</a>
+        <a class="nav-item" href="#settings" data-view="settings"><span>⚙</span> Settings</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><div class="help-icon">?</div><strong>Need a hand?</strong><p>This is a starter dashboard. Connect a real backend before managing real servers.</p></div>
+        <div class="profile"><div class="avatar">A</div><div><strong>Admin</strong><small>Demo workspace</small></div><span class="dots">•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn mobile-menu" id="menuBtn" aria-label="Open menu">☰</button>
+        <div class="breadcrumbs">Workspace <span>/</span> <strong id="pageTitle">Overview</strong></div>
+        <div class="top-actions"><span class="status-dot"></span><span class="online-label">Demo mode</span><button class="icon-btn" id="bellBtn" aria-label="Notifications">♧</button><div class="avatar small">A</div></div>
+      </header>
+
+      <section class="page active-page" id="overview">
+        <div class="welcome-row">
+          <div><p class="eyebrow">CONTROL CENTER</p><h1>Good to see you, Admin <span class="wave">✦</span></h1><p class="subheading">Here’s what’s happening with your hosting workspace.</p></div>
+          <button class="primary-btn" id="createBtn"><span>＋</span> Create server</button>
+        </div>
+
+        <div class="notice"><span class="notice-symbol">i</span><div><strong>Prototype mode</strong><p>These are sample values only. No real VPS is created, and no cloud account is connected.</p></div><button class="notice-close" id="closeNotice" aria-label="Dismiss">×</button></div>
+
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span>Total servers</span><span class="stat-icon purple">▣</span></div><div class="stat-value" id="serverCount">2</div><div class="stat-foot"><span class="green-text">●</span> Demo inventory</div></article>
+          <article class="stat-card"><div class="stat-top"><span>CPU usage</span><span class="stat-icon blue">⌁</span></div><div class="stat-value">24<span class="unit">%</span></div><div class="meter"><span style="width:24%"></span></div><div class="stat-foot">Illustrative metric</div></article>
+          <article class="stat-card"><div class="stat-top"><span>Memory usage</span><span class="stat-icon orange">▤</span></div><div class="stat-value">3.8 <span class="unit">GB</span></div><div class="meter orange-meter"><span style="width:38%"></span></div><div class="stat-foot">Illustrative metric</div></article>
+          <article class="stat-card"><div class="stat-top"><span>Storage allocated</span><span class="stat-icon green">▱</span></div><div class="stat-value">80 <span class="unit">GB</span></div><div class="stat-foot">Sample allocation</div></article>
+        </div>
+
+        <div class="content-grid">
+          <article class="panel servers-panel">
+            <div class="panel-heading"><div><h2>Your servers</h2><p>Manage your demo instances</p></div><button class="text-btn" data-go="servers">View all ↗</button></div>
+            <div class="table-wrap"><table><thead><tr><th>SERVER</th><th>LOCATION</th><th>STATUS</th><th>PLAN</th><th></th></tr></thead><tbody id="serverRows">
+              <tr><td><div class="server-name"><span class="os-icon ubuntu">U</span><div><strong>ubuntu-demo-01</strong><small>Ubuntu Linux</small></div></div></td><td>Demo region</td><td><span class="pill running">● Running (demo)</span></td><td>Starter</td><td><button class="row-menu" data-details="ubuntu-demo-01">•••</button></td></tr>
+              <tr><td><div class="server-name"><span class="os-icon windows">⊞</span><div><strong>windows-demo-01</strong><small>Windows (mock)</small></div></div></td><td>Demo region</td><td><span class="pill stopped">● Stopped (demo)</span></td><td>Starter</td><td><button class="row-menu" data-details="windows-demo-01">•••</button></td></tr>
+            </tbody></table></div>
+            <div class="panel-footer"><span>Showing demo instances</span><button class="text-btn" data-go="servers">Manage servers →</button></div>
+          </article>
+          <article class="panel activity-panel">
+            <div class="panel-heading"><div><h2>Recent activity</h2><p>Latest workspace events</p></div><span class="live-label">DEMO</span></div>
+            <div class="timeline" id="activityList">
+              <div class="timeline-item"><span class="timeline-dot purple-dot"></span><div><strong>Workspace created</strong><p>Demo workspace initialized</p><small>Just now</small></div></div>
+              <div class="timeline-item"><span class="timeline-dot green-dot"></span><div><strong>Ubuntu instance added</strong><p>Sample server added to inventory</p><small>Earlier</small></div></div>
+              <div class="timeline-item"><span class="timeline-dot orange-dot"></span><div><strong>RDP profile prepared</strong><p>Not connected to a real Windows host</p><small>Earlier</small></div></div>
+            </div>
+          </article>
+        </div>
+        <footer>FreeHost Cloud <span>•</span> Hosting dashboard starter <span class="footer-right">Prototype only — no real infrastructure attached</span></footer>
+      </section>
+
+      <section class="page" id="servers">
+        <div class="welcome-row"><div><p class="eyebrow">INFRASTRUCTURE</p><h1>Servers</h1><p class="subheading">Your server inventory, in one place.</p></div><button class="primary-btn" id="createBtn2">＋ Create server</button></div>
+        <article class="panel full-panel"><div class="panel-heading"><div><h2>All servers</h2><p>Demo inventory stored in this browser session</p></div><span class="live-label">DEMO DATA</span></div><div class="table-wrap"><table><thead><tr><th>SERVER</th><th>OS</th><th>STATUS</th><th>CREATED</th><th>ACTION</th></tr></thead><tbody id="allServerRows"></tbody></table></div><div class="empty-hint">Create Server adds a sample entry only. It does not provision a real VPS.</div></article>
+        <footer>FreeHost Cloud <span>•</span> Prototype only</footer>
+      </section>
+
+      <section class="page" id="activity">
+        <div class="welcome-row"><div><p class="eyebrow">AUDIT LOG</p><h1>Activity</h1><p class="subheading">Recent demo events from this workspace.</p></div></div>
+        <article class="panel full-panel"><div class="panel-heading"><div><h2>Event history</h2><p>Prototype events only</p></div></div><div class="activity-page-list" id="fullActivity"></div></article>
+        <footer>FreeHost Cloud <span>•</span> Prototype only</footer>
+      </section>
+
+      <section class="page" id="settings">
+        <div class="welcome-row"><div><p class="eyebrow">PREFERENCES</p><h1>Settings</h1><p class="subheading">Customize this demo workspace.</p></div></div>
+        <article class="panel settings-panel"><h2>Workspace settings</h2><label class="field-label" for="workspaceName">Workspace name</label><input id="workspaceName" value="FreeHost Cloud" maxlength="40"><label class="field-label" for="adminName">Admin display name</label><input id="adminName" value="Admin" maxlength="40"><button class="primary-btn" id="saveSettings">Save settings</button><p class="settings-note" id="settingsNote">Settings apply only in this browser and are not authenticated.</p></article>
+        <article class="panel security-panel"><h2>Before using real servers</h2><ul><li>Add a real backend and database.</li><li>Implement secure authentication and role checks.</li><li>Keep cloud API keys on the server, never in frontend JavaScript.</li><li>Validate requests and log admin actions.</li></ul></article>
+        <footer>FreeHost Cloud <span>•</span> Prototype only</footer>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="createDialog">
+    <form method="dialog" id="createForm">
+      <div class="dialog-top"><div><p class="eyebrow">NEW INSTANCE</p><h2>Create demo server</h2></div><button class="icon-btn" value="cancel" aria-label="Close">×</button></div>
+      <p class="dialog-copy">This adds a sample row to the dashboard only. No cloud resources are created.</p>
+      <label class="field-label" for="serverName">Server name</label><input id="serverName" required maxlength="30" pattern="[A-Za-z0-9-]+" placeholder="my-ubuntu-server">
+      <label class="field-label" for="serverOS">Operating system</label><select id="serverOS"><option>Ubuntu Linux</option><option>Windows (mock)</option></select>
+      <label class="field-label" for="serverRegion">Region</label><select id="serverRegion"><option>Demo region</option><option>US East (demo)</option><option>Europe (demo)</option><option>Asia Pacific (demo)</option></select>
+      <div class="dialog-actions"><button class="secondary-btn" value="cancel">Cancel</button><button class="primary-btn" id="confirmCreate" value="default">Add demo server</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
